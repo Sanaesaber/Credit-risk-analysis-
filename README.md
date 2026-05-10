@@ -1,5 +1,3 @@
-**README :**
-```markdown
 # 💳 Credit Risk & Loan Default Analysis
 
 > End-to-end credit scoring system using XGBoost, SHAP explainability, and Power BI — replacing manual credit review with Basel III-compliant predictions.
@@ -8,23 +6,19 @@
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
 
-
-
+ 
 
 ![XGBoost](https://img.shields.io/badge/XGBoost-ML-orange)
 
-
-
+ 
 
 ![SQL](https://img.shields.io/badge/SQL-Exploration-336791?logo=postgresql)
 
-
-
+ 
 
 ![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-yellow?logo=powerbi)
 
-
-
+ 
 
 ![SHAP](https://img.shields.io/badge/SHAP-Explainability-green)
 
@@ -54,9 +48,11 @@ A commercial bank needed to replace its manual credit review process with a data
 ## 🔬 Methodology
 
 ### 1. SQL-Based Exploration
+
 Default rates analyzed by loan grade, interest rate tier, and borrower income level.
 
 ### 2. Preprocessing
+
 | Step | Detail |
 |---|---|
 | Missing — interest rate | Grade-grouped median imputation (9.6% missing) |
@@ -65,13 +61,16 @@ Default rates analyzed by loan grade, interest rate tier, and borrower income le
 | Loan grade | Ordinal encoding A=1 through G=7 |
 
 ### 3. Feature Engineering
+
 - **Debt-to-income ratio** — engineered to capture overall leverage
 - **Loan purpose** — one-hot encoded to capture borrower intent risk
 
 ### 4. Class Imbalance — SMOTE
+
 Applied on training set only (77.9 / 22.1 split) — test set kept clean.
 
 ### 5. Model Comparison
+
 | Model | Accuracy | Recall | F1-Score | ROC-AUC |
 |---|---|---|---|---|
 | Logistic Regression | 84.2% | 64.8% | 67.9% | 0.892 |
@@ -81,25 +80,27 @@ Applied on training set only (77.9 / 22.1 split) — test set kept clean.
 Tuned with GridSearchCV — 5-fold cross-validation optimizing for ROC-AUC.
 
 ### 6. SHAP Feature Importance
+
 | Feature | Business Meaning |
 |---|---|
 | Loan Grade | Strongest single predictor of default |
 | Interest Rate | High rate signals embedded risk |
 | Loan-to-Income Ratio | Debt burden vs income |
-| Prior Default on File | 2.3× higher re-default risk |
+| Prior Default on File | 2.3x higher re-default risk |
 | Annual Income | Higher income = significantly lower default |
 | Debt-to-Income Ratio | Engineered leverage indicator |
 
 ### 7. Power BI Dashboard
+
 Three-page report: portfolio KPIs, segment analysis by grade and loan intent, individual borrower risk scoring.
 
 ---
 
 ## 💼 Business Impact
 
-- **Grade G loans default at 14× the rate of Grade A** — loan grade must anchor any scoring model
+- **Grade G loans default at 14x the rate of Grade A** — loan grade must anchor any scoring model
 - Model identifies **87 out of every 100 actual defaulters** before disbursement
-- On a **$50M portfolio** → projected savings of **$2.1–2.8M annually**
+- On a **$50M portfolio** — projected savings of **$2.1M to $2.8M annually**
 - Strategic recommendations:
   - Restrict Grade F and G loans
   - Flag loan-to-income ratios above 40%
@@ -108,23 +109,6 @@ Three-page report: portfolio KPIs, segment analysis by grade and loan intent, in
 ---
 
 ## 🗂️ Project Structure
-
-credit-risk-analysis/
-├── data/
-│   └── loan_data.csv
-├── sql/
-│   └── credit_exploration.sql
-├── notebooks/
-│   ├── 01_EDA_and_SQL_Profiling.ipynb
-│   ├── 02_Preprocessing_and_Feature_Engineering.ipynb
-│   ├── 03_Modeling_and_Evaluation.ipynb
-│   └── 04_SHAP_and_Business_Insights.ipynb
-├── dashboard/
-│   └── credit_risk_dashboard.pbix
-├── requirements.txt
-└── README.md
-
-
 ---
 
 ## 🛠️ Tech Stack
